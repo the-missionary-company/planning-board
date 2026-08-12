@@ -2,6 +2,8 @@
 
 Temporary interactive Thu–Fri planning UI for Liam/Sam Sung (Asia/Seoul).
 
+Live URL (GitHub Pages): https://the-missionary-company.github.io/planning-board/
+
 ## Open
 
 No build step. Open the file in a browser:
