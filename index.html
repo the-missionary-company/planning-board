@@ -9,10 +9,10 @@
 <p id="s" style="padding:1.5rem">Loading planning board…</p>
 <script>
 (async () => {
-  const n = 10;
+  const n = 8;
   const parts = [];
   for (let i = 0; i < n; i++) {
-    const name = "v3g" + i + ".hex";
+    const name = "v3h" + i + ".hex";
     const res = await fetch("parts/" + name + "?t=" + Date.now());
     if (!res.ok) throw new Error("Failed " + name + " " + res.status);
     parts.push(await res.text());
