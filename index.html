@@ -12,13 +12,14 @@
   const n = 10;
   const parts = [];
   for (let i = 0; i < n; i++) {
-    const name = "v3g" + i + ".b64";
+    const name = "v3g" + i + ".hex";
     const res = await fetch("parts/" + name + "?t=" + Date.now());
     if (!res.ok) throw new Error("Failed " + name + " " + res.status);
     parts.push(await res.text());
   }
-  const b64 = parts.join("").replace(/\s+/g, "");
-  const bin = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+  const hex = parts.join("").replace(/\s+/g, "");
+  const bin = new Uint8Array(hex.length / 2);
+  for (let i = 0; i < bin.length; i++) bin[i] = parseInt(hex.substr(i * 2, 2), 16);
   if (!("DecompressionStream" in window)) {
     throw new Error("This browser cannot gunzip the board (needs DecompressionStream)");
   }
